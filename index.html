@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SWADESHI GEET</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="images/FAVICON.PNG" type="image/x-icon">
+</head>
+<body>
+    <div class="container music_player">
+        <div class="company_logo">
+            <h1>🎵 <span>SWADESHI</span><br> <span> GEET</span></h1>
+            <p>Let's Revisit To Older Times</p>
+        </div>
+        <div class="audio_player">
+            <audio controls src="horse.mp3" type="audio/mpeg">
+                Your browser does not support the <code>audio</code> element.
+            </audio>
+        </div>
+        <div class="control">
+            <button onclick="playAudio()">Play</button>
+            <button onclick="pauseAudio()">Pause</button>
+            <button onclick="replayAudio()">Replay</button>
+        </div>
+    </div>
+
+    <script>
+        function playAudio() {
+            var audio = document.querySelector('audio');
+            audio.play();
+        }
+
+        function pauseAudio() {
+            var audio = document.querySelector('audio');
+            audio.pause();
+        }
+
+        function replayAudio() {
+            var audio = document.querySelector('audio');
+            audio.currentTime = 0;
+            audio.play();
+        }
+    </script>
+</body>
+</html>

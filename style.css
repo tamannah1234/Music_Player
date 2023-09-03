@@ -1,0 +1,41 @@
+body{
+    height: 100vh;
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    background :linear-gradient(to bottom right,rgb(83, 212, 83), white,rgb(255, 145, 0));
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size:cover ;
+}
+.music_player{
+    width: 20vw;
+    height: 45vh;
+    margin: auto;
+    border:1px outset;
+    border-radius: 20px;
+    background-color: aliceblue;
+    margin: auto;
+    padding: 20px ;
+    text-align: center;
+
+}
+
+Span{
+        color: orangered;
+}
+
+button{
+    border: none;
+    height: 5vh;
+    width: 6vw;
+    
+    border-radius: 4px;
+    background-color:rgb(0, 162, 255);
+    color: antiquewhite;
+
+}
+button:hover{
+    background-color: blue;
+    cursor: pointer;
+}
