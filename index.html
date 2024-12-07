@@ -13,34 +13,88 @@
             <h1>🎵 <span>SWADESHI</span><br> <span> GEET</span></h1>
             <p>Let's Revisit To Older Times</p>
         </div>
+        <div class="file_input">
+            <label for="audio-file">Choose an audio file:</label>
+            <input type="file" id="audio-file" accept="audio/*">
+        </div>
         <div class="audio_player">
-            <audio controls src="horse.mp3" type="audio/mpeg">
+            <audio id="audio-player" controls>
                 Your browser does not support the <code>audio</code> element.
             </audio>
         </div>
         <div class="control">
-            <button onclick="playAudio()">Play</button>
-            <button onclick="pauseAudio()">Pause</button>
-            <button onclick="replayAudio()">Replay</button>
+            <button id="play-btn">Play</button>
+            <button id="pause-btn">Pause</button>
+            <button id="replay-btn">Replay</button>
         </div>
+        <div id="status" class="status"></div>
     </div>
 
     <script>
-        function playAudio() {
-            var audio = document.querySelector('audio');
-            audio.play();
-        }
+        const audio = document.getElementById('audio-player');
+        const fileInput = document.getElementById('audio-file');
+        const playButton = document.getElementById('play-btn');
+        const pauseButton = document.getElementById('pause-btn');
+        const replayButton = document.getElementById('replay-btn');
+        const statusDisplay = document.getElementById('status');
 
-        function pauseAudio() {
-            var audio = document.querySelector('audio');
-            audio.pause();
-        }
+        // Utility function to update the status
+        const updateStatus = (message) => {
+            if (statusDisplay) {
+                statusDisplay.textContent = message;
+            }
+        };
 
-        function replayAudio() {
-            var audio = document.querySelector('audio');
-            audio.currentTime = 0;
-            audio.play();
-        }
+        // Handle file selection and load it into the audio player
+        fileInput.addEventListener('change', (event) => {
+            const file = event.target.files[0];
+            if (file) {
+                const fileURL = URL.createObjectURL(file);
+                audio.src = fileURL;
+                updateStatus(`Loaded: ${file.name}`);
+                audio.load(); // Reload the audio element with the new source
+            }
+        });
+
+        // Play Audio
+        playButton.addEventListener('click', () => {
+            if (audio && audio.src) {
+                audio.play();
+                updateStatus('Playing...');
+            } else {
+                updateStatus('Please load an audio file first.');
+            }
+        });
+
+        // Pause Audio
+        pauseButton.addEventListener('click', () => {
+            if (audio && audio.src) {
+                audio.pause();
+                updateStatus('Paused');
+            }
+        });
+
+        // Replay Audio
+        replayButton.addEventListener('click', () => {
+            if (audio && audio.src) {
+                audio.currentTime = 0;
+                audio.play();
+                updateStatus('Replaying...');
+            }
+        });
+
+        // Update status when audio ends
+        audio.addEventListener('ended', () => {
+            updateStatus('Audio ended.');
+        });
     </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
