@@ -14,10 +14,13 @@ Flexbox: Layout used for centering elements.
 File Structure
 graphql
 Copy code
-/wynk-audio-player
+
   ├── index.html        # The main HTML file
+
   ├── style.css         # The CSS file for styling
+
   ├── script.js         # The JavaScript file for functionality
+  
   └── README.md         # Project documentation
 Usage
 Open the app in your browser.
